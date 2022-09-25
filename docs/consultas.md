@@ -1,5 +1,15 @@
 #### II HACIENDO CONSULTAS:
 
+##### Tenemos como base este mapeado optimizado que hemos generado
+
+| name                 | type    | 
+|----------------------|---------|
+| @timestamp           | date    |
+| estado_consulta      | keyword |
+| servicio             | keyword |
+| administrador        | text    |
+| consultas_realizadas | long    |
+
 ##### 1) : Conteo de registros con **estado_consulta** igual a error y/o consumo:
 
 - Request :
