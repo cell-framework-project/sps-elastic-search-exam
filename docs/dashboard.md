@@ -5,7 +5,7 @@
  - Eje Vertical : **administrador**
  - Métrica : **consultas_realizadas**
 
-![mapa de calor](files/Users/jzhang/Desktop/Isolated.png)
+![mapa de calor](https://github.com/cell-framework-project/sps-elastic-search-exam/blob/master/img/chart_1.png)
 
 ##### 2) Histograma :
  - Eje Horizontal : **@timestamp (en horas)**
@@ -13,4 +13,4 @@
  - Condición : **estado_consulta = error**
  - Segmentación Stacks(iniciativa propia) : **servicio**
 
-![historgrama](files/Users/jzhang/Desktop/Isolated.png)
+![historgrama](https://github.com/cell-framework-project/sps-elastic-search-exam/blob/master/img/chart_2.png)
