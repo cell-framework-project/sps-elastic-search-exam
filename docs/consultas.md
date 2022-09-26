@@ -3,7 +3,7 @@
 
 #### II HACIENDO CONSULTAS:
 
-##### Tenemos como base este mapeado optimizado que hemos generado
+- Tenemos como base este **mapeado optimizado** que hemos generado
 
 | name                 | type    | 
 |----------------------|---------|
@@ -15,7 +15,9 @@
 
 ##### 1) : Conteo de registros con **estado_consulta** igual a error y/o consumo:
 
-- Request :
+- Utilizamos la clausula **terms** para varios valores
+
+###### Request :
 
 ```json
 GET log_consultas/_count
@@ -33,7 +35,7 @@ GET log_consultas/_count
   }
 }
 ```
-- Response :
+###### Response :
 
 ```json
 {
@@ -49,6 +51,10 @@ GET log_consultas/_count
 
 ##### 2) : Conteo de registros con **administrador**  **Juan Lara**
 
+- Siendo el nombre considerado como dato de texto, decidimos utilizar la clausula **match_phrase**
+
+###### Request :
+
 ```json
 GET log_consultas/_count
 {
@@ -59,6 +65,8 @@ GET log_consultas/_count
   }
 }
 ```
+
+###### Response :
 
 ```json
 {
@@ -72,24 +80,28 @@ GET log_consultas/_count
 }
 ```
 
+
+
 ##### 3) : Conteo de registros con **estado_consulta** igual a **informativo** y **servicio** igual a **borrado**
 
-- Request :
+- Anidamos ambos **match** en **bool** para poder utilizarlos y usamos must al ser un dato categórico
+
+###### Request :
 
 ```json
 GET log_consultas/_count
 {
   "query": {
     "bool": {
-    "must": [
-      { "match": { "estado_consulta":  "informativo" } },
-      { "match": { "servicio":  "borrado" } }
-    ]
-  }
+      "must": [
+        { "match": { "estado_consulta":  "informativo" } },
+        { "match": { "servicio":  "borrado" } }
+      ]
+    }
   }
 }
 ```
-- Response :
+###### Response :
 
 ```json
 {
@@ -105,7 +117,55 @@ GET log_consultas/_count
 
 ##### 4) Sumatoria **consultas_realizadas** con **estado_consulta** igual a error  :
 
+- Utilizamos la clausula **size** para solo ver el **agg** y no toda la tabla
+
+###### Request :
+
 ```json
 GET log_consultas/_search
+{
+  "query": {
+    "constant_score": {
+      "filter": {
+        "match": { "estado_consulta": "error" }
+      }
+    }
+  },
+  "size": 0,
+  "aggs": {
+    "total_consultas": {
+      "sum": {
+        "field": "consultas_realizadas"
+      }
+    }
+  }
+}
+```
 
+###### Response :
+
+```json
+{
+  "took": 0,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 78,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": []
+  },
+  "aggregations": {
+    "total_consultas": {
+      "value": 2865
+    }
+  }
+}
 ```

@@ -58,16 +58,16 @@ POST log_consultas/_doc
 ```
 
 
-###### Buscamos el registro insertado
+- Buscamos el registro insertado
 
-- Request :
+###### Request :
 
 
 ```json
 GET log_consultas/_search
 ```
 
-- Response :
+###### Response :
 
 
 ```json
@@ -106,14 +106,14 @@ GET log_consultas/_search
 
 ##### 3) Consultamos ahora el mapeado de datos del registro insertado en nuestro índice
 
-- Request :
+###### Request :
 
 
 ```json
 GET log_consultas/_mapping
 ```
 
-- Response :
+###### Response :
 
 
 ```json
@@ -160,7 +160,7 @@ GET log_consultas/_mapping
 }
 ```
 
-###### Tenemos el siguiente mapeado:
+- Tenemos el siguiente mapeado:
 
 | name                 | type | 
 |----------------------|------|
@@ -170,14 +170,14 @@ GET log_consultas/_mapping
 | administrador        | text |
 | consultas_realizadas | long |
 
-###### Podemos hacer correciones en este mapeado para hacerlo más eficiente:
+- Podemos hacer correciones en este mapeado para hacerlo más eficiente:
 
-- por defecto los datos aparecen anidados en la respuesta, entonces estamos tomando en contacto el anidarlos
-- @timestamp : **date** es el tipo correcto, por lo mismo permanece inalterada
-- estado_consulta : al ser un dato categórico, **keyword** es mejor opción que **text**
-- servicio : igualmente siendo un dato categórico, **keyword** es mejor que **text**
-- administrador : podría ser tanto un dato categórico como uno de texto, pero para dar flexibilidad, lo consideraremos como **text**
-- consultas_realizadas : podría usarse tanto **int** como **long** , pero para dejar más libertad, usaremos **long**
+* por defecto los datos aparecen anidados en la respuesta, entonces estamos tomando en contacto el anidarlos
+* @timestamp : **date** es el tipo correcto, por lo mismo permanece inalterada
+* estado_consulta : al ser un dato categórico, **keyword** es mejor opción que **text**
+* servicio : igualmente siendo un dato categórico, **keyword** es mejor que **text**
+* administrador : podría ser tanto un dato categórico como uno de texto, pero para dar flexibilidad, lo consideraremos como **text**
+* consultas_realizadas : podría usarse tanto **int** como **long** , pero para dejar más libertad, usaremos **long**
 
 ###### Por eso podemos definir el mapeado y tipado de datos de esta forma:
 
@@ -192,7 +192,7 @@ GET log_consultas/_mapping
 ##### 4) Carga en lote **BULK api**
 
 
-###### Eliminamos el índice y volvemos a crearlo, para ajustar el template y posteriormente cargar en lote
+- Eliminamos el índice y volvemos a crearlo, para ajustar el template y posteriormente cargar en lote
 
 ```json
 DELETE log_consultas
@@ -202,7 +202,7 @@ DELETE log_consultas
 PUT log_consultas
 ```
 
-###### Con base al mapeado optimizado que planetamos, generaremos nuestro **template**
+- Con base al mapeado optimizado que planetamos, generaremos nuestro **template**
 
 
 - Request:
@@ -244,7 +244,7 @@ PUT _index_template/log_consultas
 }
 ```
 
-###### Si volvemos a consultar el índice, ahora ya aparece con el mapeado determinado
+- Si volvemos a consultar el índice, ahora ya aparece con el mapeado determinado
 
 ```json
 GET log_consultas/_mapping
@@ -276,8 +276,9 @@ GET log_consultas/_mapping
 }
 ```
 
-###### Finalmente insertamos los registros en  lote
+- Finalmente insertamos los registros en  lote
 
+###### Request :
 
 ```json
 POST log_consultas/_bulk
@@ -290,6 +291,8 @@ POST log_consultas/_bulk
 {"index":{"_index":"log_consultas","_id":4}}
 ...
 ```
+
+###### Response :
 
 ```json
 {
@@ -348,14 +351,14 @@ POST log_consultas/_bulk
   ]
 }
 ```
-###### Hacemos una breve consulta para verificar el conteo de registros :
+- Hacemos una breve consulta para verificar el conteo de registros :
 
-- Request:
+###### Request:
 
 ```json
 GET log_consultas/_count
 ```
-- Response:
+###### Response:
 
 ```json
 {
