@@ -49,6 +49,9 @@ GET log_consultas/_count
 }
 ```
 
+#### Registros : 78
+
+
 ##### 2) : Conteo de registros con **administrador**  **Juan Lara**
 
 - Siendo el nombre considerado como dato de texto, decidimos utilizar la clausula **match_phrase**
@@ -80,6 +83,7 @@ GET log_consultas/_count
 }
 ```
 
+#### Registros : 299
 
 
 ##### 3) : Conteo de registros con **estado_consulta** igual a **informativo** y **servicio** igual a **borrado**
@@ -115,9 +119,12 @@ GET log_consultas/_count
 }
 ```
 
+#### Registros : 52
+
+
 ##### 4) Sumatoria **consultas_realizadas** con **estado_consulta** igual a error  :
 
-- Utilizamos la clausula **size** para solo ver el **agg** y no toda la tabla
+- Utilizamos la clausula **size** para solo ver el **agg** y no toda la tabla y llamamos a nuestra sumatoria de **consultas_realizadas**  como **total_consultas**
 
 ###### Request :
 
@@ -169,3 +176,5 @@ GET log_consultas/_search
   }
 }
 ```
+
+#### Consultas Totales : 2865
