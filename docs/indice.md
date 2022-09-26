@@ -1,3 +1,10 @@
+###### [VOLVER AL INICIO](https://github.com/cell-framework-project/sps-elastic-search-exam)
+
+##### Creamos antes que nada el servicio sps_practica :
+
+![mapa de calor](https://github.com/cell-framework-project/sps-elastic-search-exam/blob/master/img/deployment.png)
+
+
 ##### 1) Creando índice **log_consultas**
 
 - Request :
