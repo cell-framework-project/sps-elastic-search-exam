@@ -91,7 +91,7 @@ GET log_consultas/_count
 ##### 3) : Conteo de registros con **estado_consulta** igual a **informativo** y **servicio** igual a **borrado**
 
 - Utilizamos **count**
-- Anidamos ambos **match** en **bool** para poder utilizarlos y usamos must al ser un dato categórico
+- Anidamos ambos **match** en **bool** para poder utilizarlos y usamos **must**
 
 ###### Request :
 
