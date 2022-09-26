@@ -278,6 +278,7 @@ GET log_consultas/_mapping
 
 ###### Finalmente insertamos los registros en  lote
 
+
 ```json
 POST log_consultas/_bulk
 {"index":{"_index":"log_consultas","_id":1}}
