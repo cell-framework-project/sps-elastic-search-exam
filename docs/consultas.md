@@ -75,7 +75,7 @@ GET log_consultas/_count
 
 ```json
 {
-  "count": 299,
+  "count": 98,
   "_shards": {
     "total": 1,
     "successful": 1,
@@ -85,7 +85,7 @@ GET log_consultas/_count
 }
 ```
 
-#### Registros : 299
+#### Registros : 98
 
 
 ##### 3) : Conteo de registros con **estado_consulta** igual a **informativo** y **servicio** igual a **borrado**

@@ -371,3 +371,5 @@ GET log_consultas/_count
   }
 }
 ```
+
+#### Registros insertados 299
