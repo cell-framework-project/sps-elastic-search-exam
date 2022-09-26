@@ -15,6 +15,7 @@
 
 ##### 1) : Conteo de registros con **estado_consulta** igual a error y/o consumo:
 
+- Utilizamos **count**
 - Utilizamos la clausula **terms** para varios valores
 
 ###### Request :
@@ -54,6 +55,7 @@ GET log_consultas/_count
 
 ##### 2) : Conteo de registros con **administrador**  **Juan Lara**
 
+- Utilizamos **count**
 - Siendo el nombre considerado como dato de texto, decidimos utilizar la clausula **match_phrase**
 
 ###### Request :
@@ -88,6 +90,7 @@ GET log_consultas/_count
 
 ##### 3) : Conteo de registros con **estado_consulta** igual a **informativo** y **servicio** igual a **borrado**
 
+- Utilizamos **count**
 - Anidamos ambos **match** en **bool** para poder utilizarlos y usamos must al ser un dato categórico
 
 ###### Request :
@@ -124,6 +127,7 @@ GET log_consultas/_count
 
 ##### 4) Sumatoria **consultas_realizadas** con **estado_consulta** igual a error  :
 
+- Utilizamos **search**
 - Utilizamos la clausula **size** para solo ver el **agg** y no toda la tabla y llamamos a nuestra sumatoria de **consultas_realizadas**  como **total_consultas**
 
 ###### Request :
