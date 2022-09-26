@@ -80,7 +80,12 @@ GET log_consultas/_count
 GET log_consultas/_count
 {
   "query": {
-    
+    "bool": {
+    "must": [
+      { "match": { "estado_consulta":  "informativo" } },
+      { "match": { "servicio":  "borrado" } }
+    ]
+  }
   }
 }
 ```
